@@ -58,7 +58,7 @@ export function BlogSection() {
               <dl className="flex items-center gap-1.5 text-xs text-muted">
                 <dt className="sr-only">Published on</dt>
                 <dd>
-                  <span className="text-muted-foreground/70">Published on</span>{" "}
+                  <span className="text-muted-foreground">Published on</span>{" "}
                   <time
                     dateTime={post.date.split(".").reverse().join("-")}
                     className="font-mono"
@@ -75,7 +75,7 @@ export function BlogSection() {
       <div className="mt-4 flex justify-center">
         <Link
           href="/blog"
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground focus-visible:outline-none"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
         >
           All posts
           <ArrowRightIcon className="size-3.5" />

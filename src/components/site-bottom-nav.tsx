@@ -18,7 +18,9 @@ export function SiteBottomNav() {
         type="button"
         onClick={openCommandPalette}
         className="flex h-8 min-w-20 items-center justify-center gap-2 rounded-md px-3 text-xs text-foreground/80"
-        aria-label="Open command palette"
+        aria-label="Menu — open command palette"
+        aria-haspopup="dialog"
+        aria-controls="command-palette"
       >
         <SearchIcon className="size-3.5" />
         <span>Menu</span>

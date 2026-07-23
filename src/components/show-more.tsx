@@ -22,7 +22,7 @@ export function ShowMore({ limit, total, children }: ShowMoreProps) {
         type="button"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
-        className="mt-2 font-mono text-xs tracking-widest text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+        className="mt-2 font-mono text-xs tracking-widest text-muted transition-colors hover:text-foreground focus-visible:text-foreground"
       >
         {expanded ? "Show less" : "Show more"}
       </button>

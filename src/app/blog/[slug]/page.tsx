@@ -22,7 +22,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <main className="mx-auto w-full max-w-3xl border-x border-line px-4 py-8 sm:px-6 sm:py-12">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="mx-auto w-full max-w-3xl border-x border-line px-4 py-8 sm:px-6 sm:py-12"
+    >
       <Link
         href="/blog"
         className="font-mono text-xs text-muted underline-offset-4 hover:text-foreground hover:underline"

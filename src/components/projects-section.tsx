@@ -93,7 +93,7 @@ function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open ${project.name}`}
-          className="relative flex w-9 shrink-0 items-center justify-center text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+          className="relative flex w-9 shrink-0 items-center justify-center text-muted transition-colors hover:text-foreground focus-visible:text-foreground"
         >
           <LinkIcon className="size-4" />
         </a>

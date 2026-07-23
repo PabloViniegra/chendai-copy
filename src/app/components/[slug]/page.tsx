@@ -22,7 +22,11 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   }
 
   return (
-    <main className="mx-auto w-full max-w-3xl border-x border-line px-4 py-8 sm:px-6 sm:py-12">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="mx-auto w-full max-w-3xl border-x border-line px-4 py-8 sm:px-6 sm:py-12"
+    >
       <header className="screen-line-bottom -mx-4 mb-6 px-4 pb-6 sm:-mx-6 sm:px-6">
         <p className="font-mono text-xs tracking-widest text-muted">
           COMPONENT

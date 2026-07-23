@@ -63,7 +63,7 @@ export function InsightsSection() {
         className="mb-4 font-mono text-xs tracking-widest text-muted-foreground uppercase"
       >
         Insights{" "}
-        <span className="text-muted-foreground/70">
+        <span className="text-muted-foreground">
           ({formatDateRange(data.startDate, data.endDate)})
         </span>
       </h2>
@@ -112,9 +112,9 @@ export function InsightsSection() {
           className="aspect-2/1 w-full sm:aspect-3/1"
           preserveAspectRatio="none"
           role="img"
-          aria-label="Sessions and unique visitors over time"
+          aria-label={`Traffic from ${data.startDate} to ${data.endDate}: ${data.summary.total_sessions.toLocaleString()} sessions and ${data.summary.unique_visitors.toLocaleString()} unique visitors`}
         >
-          <title>Sessions and unique visitors over time</title>
+          <title>Traffic over time: sessions and unique visitors</title>
           <g className="text-foreground/20">
             {[0.25, 0.5, 0.75].map((ratio) => (
               <line
@@ -149,7 +149,7 @@ export function InsightsSection() {
           />
         </svg>
 
-        <figcaption className="pointer-events-none absolute right-4 bottom-2 font-mono text-xs leading-none text-muted-foreground/70 select-none">
+        <figcaption className="pointer-events-none absolute right-4 bottom-2 font-mono text-xs leading-none text-muted-foreground select-none">
           FIG_002
         </figcaption>
       </figure>

@@ -76,8 +76,8 @@ function AwardRow({ award }: { award: (typeof awards)[number] }) {
               href={award.referenceLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open reference"
-              className="relative flex size-7 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none"
+              aria-label={`Open reference for ${award.title}`}
+              className="relative flex size-7 shrink-0 items-center justify-center rounded-md text-muted transition-colors hover:text-foreground focus-visible:text-foreground"
             >
               <PaperclipIcon className="size-4" />
             </a>

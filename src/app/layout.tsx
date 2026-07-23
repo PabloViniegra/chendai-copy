@@ -65,6 +65,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <a
+          href="#main-content"
+          className="sr-only fixed top-2 left-2 z-200 rounded-md bg-background px-4 py-2 font-medium text-foreground shadow-lg focus:not-sr-only"
+        >
+          Skip to main content
+        </a>
         {children}
         <SiteFooter />
         <SiteBottomNav />

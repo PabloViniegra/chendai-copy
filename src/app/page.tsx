@@ -20,7 +20,11 @@ import { TestimonialsSection } from "@/components/testimonials-section";
 
 export default function Home() {
   return (
-    <main className="max-w-screen overflow-x-clip px-2">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="max-w-screen overflow-x-clip px-2"
+    >
       <div className="mx-auto w-full max-w-3xl pb-24">
         <Hero />
         <Separator />

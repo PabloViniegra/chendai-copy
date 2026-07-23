@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const OPEN_EVENT = "command-palette:open";
 
@@ -11,6 +11,7 @@ type CommandPaletteProps = {
 export function CommandPalette({ links }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const onOpen = () => {
@@ -40,6 +41,17 @@ export function CommandPalette({ links }: CommandPaletteProps) {
       window.removeEventListener("keydown", onKey);
     };
   }, []);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (open && !dialog.open) {
+      dialog.showModal();
+    } else if (!open && dialog.open) {
+      dialog.close();
+    }
+  }, [open]);
 
   useEffect(() => {
     if (open) {
@@ -92,64 +104,74 @@ export function CommandPalette({ links }: CommandPaletteProps) {
     );
   }, [actions, query]);
 
-  if (!open) {
-    return null;
-  }
-
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
+    <dialog
+      id="command-palette"
+      ref={dialogRef}
       aria-label="Command palette"
-      className="fixed inset-0 z-100 flex items-start justify-center px-4 pt-[20vh]"
+      onCancel={(event) => {
+        event.preventDefault();
+        setOpen(false);
+      }}
+      onClose={() => setOpen(false)}
+      className="m-0 h-dvh max-h-none w-screen max-w-none border-0 bg-transparent p-0 backdrop:bg-foreground/40 backdrop:backdrop-blur-sm"
     >
-      <button
-        type="button"
-        aria-label="Close command palette"
-        onClick={() => setOpen(false)}
-        className="absolute inset-0 cursor-default bg-foreground/40 backdrop-blur-sm"
-      />
+      <div className="fixed inset-0 flex items-start justify-center px-4 pt-[20vh]">
+        <button
+          type="button"
+          aria-label="Close command palette"
+          onClick={() => setOpen(false)}
+          className="absolute inset-0 cursor-pointer"
+        />
 
-      <div className="relative z-10 w-full max-w-md overflow-hidden rounded-lg border border-line bg-background shadow-2xl">
-        <div className="flex items-center justify-between gap-2 border-b border-line px-3 py-2">
-          <input
-            type="text"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search for a command to run..."
-            // biome-ignore lint/a11y/noAutofocus: command palette intentionally focuses on open
-            autoFocus
-            className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted focus:outline-none"
-          />
-          <kbd className="inline-flex h-5 shrink-0 items-center rounded border border-line bg-accent-muted px-1.5 font-mono text-[10px] text-muted">
-            Esc
-          </kbd>
-        </div>
+        <div className="relative z-10 w-full max-w-md overflow-hidden rounded-lg border border-line bg-background shadow-2xl">
+          <div className="flex items-center justify-between gap-2 border-b border-line px-3 py-2">
+            <input
+              id="command-search"
+              type="search"
+              aria-label="Search commands"
+              aria-controls="command-list"
+              aria-describedby="command-results"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search for a command to run..."
+              autoFocus
+              className="min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-muted"
+            />
+            <kbd className="inline-flex h-5 shrink-0 items-center rounded border border-line bg-accent-muted px-1.5 font-mono text-[10px] text-muted">
+              Esc
+            </kbd>
+          </div>
 
-        <ul className="max-h-72 overflow-y-auto p-1">
-          {filtered.length === 0 ? (
-            <li className="px-3 py-6 text-center text-sm text-muted">
-              No commands found
-            </li>
-          ) : (
-            filtered.map((action) => (
-              <li key={action.id}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    action.perform();
-                    setOpen(false);
-                  }}
-                  className="flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm text-foreground/85 transition-colors hover:bg-accent-muted hover:text-foreground focus-visible:bg-accent-muted focus-visible:outline-none"
-                >
-                  <span>{action.label}</span>
-                </button>
+          <p id="command-results" className="sr-only" aria-live="polite">
+            {filtered.length} {filtered.length === 1 ? "command" : "commands"}{" "}
+            found
+          </p>
+          <ul id="command-list" className="max-h-72 overflow-y-auto p-1">
+            {filtered.length === 0 ? (
+              <li className="px-3 py-6 text-center text-sm text-muted">
+                No commands found
               </li>
-            ))
-          )}
-        </ul>
+            ) : (
+              filtered.map((action) => (
+                <li key={action.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      action.perform();
+                      setOpen(false);
+                    }}
+                    className="flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm text-foreground/85 transition-colors hover:bg-accent-muted hover:text-foreground focus-visible:bg-accent-muted"
+                  >
+                    <span>{action.label}</span>
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
       </div>
-    </div>
+    </dialog>
   );
 }
 

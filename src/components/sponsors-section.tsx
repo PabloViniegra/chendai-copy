@@ -52,7 +52,7 @@ export function SponsorsSection() {
       <div className="mt-6 flex justify-center">
         <Link
           href="/sponsors"
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground focus-visible:outline-none"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
         >
           All sponsors
           <ArrowRightIcon className="size-3.5" />

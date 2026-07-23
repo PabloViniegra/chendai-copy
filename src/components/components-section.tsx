@@ -53,7 +53,7 @@ export function ComponentsSection() {
       <div className="mt-4 flex justify-center">
         <Link
           href="/components"
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground focus-visible:outline-none"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
         >
           All components
           <ArrowRightIcon className="size-3.5" />
