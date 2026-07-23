@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: #71717a;
+  --line: #e4e4e7;
+  --accent-muted: rgba(0, 0, 0, 0.05);
+
+  --contrib-0: #ebedf0;
+  --contrib-1: #9be9a8;
+  --contrib-2: #40c463;
+  --contrib-3: #30a14e;
+  --contrib-4: #216e39;
+
+  --header-height: 56px;
+  --badge-height: 22px;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #ffffff;
+  --line: #27272a;
+  --accent-muted: rgba(255, 255, 255, 0.05);
+
+  --contrib-0: #161b22;
+  --contrib-1: #0e4429;
+  --contrib-2: #006d32;
+  --contrib-3: #26a641;
+  --contrib-4: #39d353;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent-muted: var(--accent-muted);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-ibm-plex-serif);
+
+  --spacing-header: var(--header-height);
+  --spacing-badge: var(--badge-height);
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+  overflow-x: clip;
+}
+
+@layer base {
+  :where(a, button, summary, [role="button"], input, [tabindex]):focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  :where([role="dialog"], [role="menu"]):focus-visible {
+    outline: none;
+  }
+}
+
+[data-glow-card] {
+  background-image: radial-gradient(
+    180px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    color-mix(in oklab, var(--foreground) 6%, transparent),
+    transparent 70%
+  );
+}
+
+@utility screen-line-top {
+  @apply relative isolate;
+  &:before {
+    content: "";
+    @apply absolute top-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+  }
+}
+
+@utility screen-line-bottom {
+  @apply relative isolate;
+  &:after {
+    content: "";
+    @apply absolute bottom-0 left-[-100vw] -z-1 h-px w-[200vw] bg-line;
+  }
+}
+
+@utility screen-dashed-line-top {
+  @apply screen-line-top;
+  &:before {
+    content: "";
+    @apply bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
+  }
+}
+
+@utility screen-dashed-line-bottom {
+  @apply screen-line-bottom;
+  &:after {
+    content: "";
+    @apply bg-[linear-gradient(to_right,var(--line)_4px,transparent_2px)] bg-size-[6px_1px] bg-repeat-x;
+  }
+}
+
+@utility screen-line-top-none {
+  @apply before:content-none;
+}
+
+@utility screen-line-bottom-none {
+  @apply after:content-none;
+}
+
+@utility diagonal-stripes {
+  --pattern-foreground: color-mix(in oklab, var(--color-line) 56%, transparent);
+  background-image: repeating-linear-gradient(
+    315deg,
+    var(--pattern-foreground) 0,
+    var(--pattern-foreground) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+}
+
+@utility stripe-divider {
+  @apply relative isolate h-8;
+  &:before {
+    content: "";
+    @apply absolute left-[-100vw] -z-1 h-full w-[200vw] diagonal-stripes;
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@utility animate-marquee-left {
+  animation: marquee-left 60s linear infinite;
+}
+
+@utility animate-marquee-right {
+  animation: marquee-right 60s linear infinite;
+}

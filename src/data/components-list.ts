@@ -1,0 +1,45 @@
+export type Component = {
+  name: string;
+  href: string;
+};
+
+export const components: Component[] = [
+  { name: "Spotlight Logo", href: "/components/spotlight-logo" },
+  { name: "Line Nav", href: "/components/line-nav" },
+  { name: "Share Menu", href: "/components/share-menu" },
+  { name: "Testimonial 2", href: "/components/testimonial-2" },
+  { name: "Logos Carousel", href: "/components/logos-carousel" },
+  { name: "Chevrons Up Down Icon", href: "/components/chevrons-up-down-icon" },
+  { name: "Mobius Loop Icon", href: "/components/mobius-loop-icon" },
+  {
+    name: "Spinning Circular Text",
+    href: "/components/spinning-circular-text",
+  },
+  { name: "Dot Grid Spotlight", href: "/components/dot-grid-spotlight" },
+  { name: "Icon Swap", href: "/components/icon-swap" },
+  { name: "Brand Assets Menu", href: "/components/brand-assets-menu" },
+  { name: "Fluid Gradient Text", href: "/components/fluid-gradient-text" },
+  { name: "TOC Minimap", href: "/components/toc-minimap" },
+  { name: "Elastic Slider", href: "/components/elastic-slider" },
+  { name: "GitHub Contributions", href: "/components/github-contributions" },
+  { name: "Theme Toggle Effect", href: "/components/theme-toggle-effect" },
+  { name: "Twemoji", href: "/components/twemoji" },
+  { name: "Middle Truncation", href: "/components/middle-truncation" },
+  { name: "Glow Card Grid", href: "/components/glow-card-grid" },
+  { name: "Testimonial Spotlight", href: "/components/testimonial-spotlight" },
+  { name: "Haptic Feedback", href: "/components/haptic" },
+  { name: "Text Flip", href: "/components/text-flip" },
+  { name: "Copy Button", href: "/components/copy-button" },
+  { name: "Testimonial", href: "/components/testimonial" },
+  { name: "Code Block Command", href: "/components/code-block-command" },
+  { name: "Consent Manager", href: "/components/consent-manager" },
+  { name: "Scroll Fade Effect", href: "/components/scroll-fade-effect" },
+  { name: "GitHub Stars", href: "/components/github-stars" },
+  { name: "Shimmering Text", href: "/components/shimmering-text" },
+  { name: "Testimonials Marquee", href: "/components/testimonials-marquee" },
+  { name: "Slide to Unlock", href: "/components/slide-to-unlock" },
+  { name: "Work Experience", href: "/components/work-experience" },
+  { name: "React Wheel Picker", href: "/components/react-wheel-picker" },
+  { name: "Theme Switcher", href: "/components/theme-switcher" },
+  { name: "Apple Hello Effect", href: "/components/apple-hello-effect" },
+];
