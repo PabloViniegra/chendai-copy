@@ -14,6 +14,44 @@ import {
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
+const timeFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: TIME_ZONE,
+  hour: "numeric",
+  minute: "2-digit",
+});
+
+function getTime() {
+  return timeFormatter.format(new Date());
+}
+
+function getTimeDifference() {
+  const now = new Date();
+  const viewerOffset = -now.getTimezoneOffset();
+
+  const targetParts = new Intl.DateTimeFormat("en-US", {
+    timeZone: TIME_ZONE,
+    timeZoneName: "longOffset",
+  }).formatToParts(now);
+  const targetOffsetLabel =
+    targetParts.find((p) => p.type === "timeZoneName")?.value ?? "GMT+0";
+  const match = targetOffsetLabel.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+  let targetOffset = 0;
+  if (match) {
+    const sign = match[1] === "+" ? 1 : -1;
+    const hours = Number(match[2] ?? 0);
+    const minutes = Number(match[3] ?? 0);
+    targetOffset = sign * (hours * 60 + minutes);
+  }
+
+  const hours = Math.abs(targetOffset - viewerOffset) / 60;
+
+  if (hours < 1) {
+    return " // same time";
+  }
+
+  return ` // ${Math.floor(hours)}h ${targetOffset > viewerOffset ? "ahead" : "behind"}`;
+}
+
 function IntroItem({
   icon,
   children,
@@ -54,44 +92,17 @@ function IntroLink({
   );
 }
 
-function getTime() {
-  return new Intl.DateTimeFormat("en-US", {
-    timeZone: TIME_ZONE,
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(new Date());
-}
-
-function getTimeDifference() {
-  const now = new Date();
-  const viewerOffset = -now.getTimezoneOffset();
-  const targetOffset =
-    (new Date(now.toLocaleString("en-US", { timeZone: TIME_ZONE })).getTime() -
-      new Date(now.toLocaleString("en-US", { timeZone: "UTC" })).getTime()) /
-    60000;
-  const hours = Math.abs(targetOffset - viewerOffset) / 60;
-
-  if (hours < 1) {
-    return " // same time";
-  }
-
-  return ` // ${Math.floor(hours)}h ${targetOffset > viewerOffset ? "ahead" : "behind"}`;
-}
-
 export function OverviewSection() {
   const [time, setTime] = useState("");
-  const [difference, setDifference] = useState("");
 
   useEffect(() => {
-    const updateTime = () => {
-      setTime(getTime());
-      setDifference(getTimeDifference());
-    };
-
+    const updateTime = () => setTime(getTime());
     updateTime();
     const interval = window.setInterval(updateTime, 60_000);
     return () => window.clearInterval(interval);
   }, []);
+
+  const difference = getTimeDifference();
 
   return (
     <section

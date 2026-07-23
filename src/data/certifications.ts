@@ -155,7 +155,3 @@ export function formatCertDate(isoDate: string): string {
   if (!year || !month || !day) return isoDate;
   return `${day}.${month}.${year}`;
 }
-
-export const sortedCertifications: Certification[] = [...certifications].sort(
-  (a, b) => b.issueDate.localeCompare(a.issueDate),
-);

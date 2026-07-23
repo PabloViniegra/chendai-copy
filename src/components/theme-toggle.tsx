@@ -25,7 +25,7 @@ export function ThemeToggle() {
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute("content", next === "dark" ? "#09090b" : "#ffffff");
     try {
-      localStorage.setItem("theme", next);
+      localStorage.setItem("theme:v1", next);
     } catch {}
   }
 

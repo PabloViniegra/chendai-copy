@@ -42,10 +42,11 @@ function buildPath(
 
 export function InsightsSection() {
   const data = INSIGHTS;
-  const maxValue = Math.max(
-    ...data.series.map((item) => item.total_sessions),
-    ...data.series.map((item) => item.unique_visitors),
-  );
+  let maxValue = 0;
+  for (const item of data.series) {
+    if (item.total_sessions > maxValue) maxValue = item.total_sessions;
+    if (item.unique_visitors > maxValue) maxValue = item.unique_visitors;
+  }
 
   const sessionsPath = buildPath(data.series, "total_sessions", maxValue);
   const visitorsPath = buildPath(data.series, "unique_visitors", maxValue);

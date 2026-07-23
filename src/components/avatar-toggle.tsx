@@ -33,7 +33,7 @@ export function AvatarToggle() {
     setMounted(true);
     setIsDark(document.documentElement.classList.contains("dark"));
     try {
-      setLightsOn(localStorage.getItem("avatarLights") !== "off");
+      setLightsOn(localStorage.getItem("avatarLights:v1") !== "off");
     } catch {}
 
     const observer = new MutationObserver(() => {
@@ -60,7 +60,7 @@ export function AvatarToggle() {
         setLightsOn((value) => {
           const next = !value;
           try {
-            localStorage.setItem("avatarLights", next ? "on" : "off");
+            localStorage.setItem("avatarLights:v1", next ? "on" : "off");
           } catch {}
           return next;
         })

@@ -28,8 +28,8 @@ export function CommandPalette({ links }: CommandPaletteProps) {
         });
         return;
       }
-      if (event.key === "Escape" && open) {
-        setOpen(false);
+      if (event.key === "Escape") {
+        setOpen((value) => (value ? false : value));
       }
     };
 
@@ -39,7 +39,7 @@ export function CommandPalette({ links }: CommandPaletteProps) {
       window.removeEventListener(OPEN_EVENT, onOpen);
       window.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -56,7 +56,7 @@ export function CommandPalette({ links }: CommandPaletteProps) {
     const root = document.documentElement;
     const isDark = root.classList.toggle("dark");
     try {
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      localStorage.setItem("theme:v1", isDark ? "dark" : "light");
     } catch {}
   }, []);
 

@@ -57,7 +57,7 @@ function BookmarkRow({ bookmark }: { bookmark: (typeof bookmarks)[number] }) {
   const Icon = categoryIcons[bookmark.category];
 
   return (
-    <article className="group/bookmark relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
+    <article className="list-row group/bookmark relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
       <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
         <Icon className="size-4" />
       </div>

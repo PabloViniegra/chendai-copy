@@ -2,10 +2,18 @@ import Image from "next/image";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 import { ArrowRightIcon } from "./icons";
 
-const FEATURED = TESTIMONIALS.filter((t) => t.isFeatured);
-
-const ROW_A = TESTIMONIALS.filter((_, i) => i % 2 === 0).slice(0, 8);
-const ROW_B = TESTIMONIALS.filter((_, i) => i % 2 === 1).slice(0, 8);
+const FEATURED: Testimonial[] = [];
+const ROW_A: Testimonial[] = [];
+const ROW_B: Testimonial[] = [];
+for (let i = 0; i < TESTIMONIALS.length; i++) {
+  const t = TESTIMONIALS[i];
+  if (t.isFeatured) FEATURED.push(t);
+  if (i % 2 === 0) {
+    if (ROW_A.length < 8) ROW_A.push(t);
+  } else if (ROW_B.length < 8) {
+    ROW_B.push(t);
+  }
+}
 
 function Card({ testimonial }: { testimonial: Testimonial }) {
   return (

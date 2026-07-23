@@ -15,7 +15,7 @@ function ProjectCard({
   const hasContent = project.description || project.bullets || project.tech;
 
   return (
-    <article className="group/project border-b border-line first:border-t">
+    <article className="list-row group/project border-b border-line first:border-t">
       <div className="flex items-stretch transition-colors hover:bg-accent-muted">
         <details
           open={defaultOpen}

@@ -38,7 +38,7 @@ export function CertificationsSection() {
 
 function CertRow({ cert }: { cert: (typeof certifications)[number] }) {
   return (
-    <article className="group/cert relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
+    <article className="list-row group/cert relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
       <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
         <CheckCircleIcon className="size-4" />
       </div>

@@ -249,7 +249,3 @@ export function formatAwardDate(isoDate: string): string {
   if (!year || !month) return isoDate;
   return `${month}.${year}`;
 }
-
-export const sortedAwards: Award[] = [...awards].sort((a, b) =>
-  b.date.localeCompare(a.date),
-);

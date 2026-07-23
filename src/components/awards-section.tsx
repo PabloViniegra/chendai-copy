@@ -38,7 +38,7 @@ export function AwardsSection() {
 
 function AwardRow({ award }: { award: (typeof awards)[number] }) {
   return (
-    <article className="group/award flex items-center border-b border-line first:border-t transition-colors hover:bg-accent-muted">
+    <article className="list-row group/award flex items-center border-b border-line first:border-t transition-colors hover:bg-accent-muted">
       <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
         <AwardIcon className="size-4" />
       </div>

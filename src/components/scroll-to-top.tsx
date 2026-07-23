@@ -1,17 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { ArrowUpIcon } from "./icons";
 
 export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY >= 400);
+    const onScroll = () => {
+      startTransition(() => setVisible(window.scrollY >= 400));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  void isPending;
 
   return (
     <button

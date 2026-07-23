@@ -178,7 +178,3 @@ export function formatBookmarkDate(isoDate: string): string {
   if (!year || !month || !day) return isoDate;
   return `${day}.${month}.${year}`;
 }
-
-export const sortedBookmarks: Bookmark[] = [...bookmarks].sort((a, b) =>
-  b.bookmarkedAt.localeCompare(a.bookmarkedAt),
-);
