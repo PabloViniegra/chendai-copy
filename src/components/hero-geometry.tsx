@@ -77,7 +77,7 @@ export function HeroGeometry() {
   return (
     <motion.svg
       ref={ref}
-      className="pointer-events-none absolute top-0 right-0 hidden h-auto w-[55%] max-w-[480px] overflow-visible md:block [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
+      className="h-auto w-full touch-manipulation overflow-visible [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
       viewBox="0 0 556 354"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -178,8 +178,10 @@ export function HeroGeometry() {
         strokeDasharray="4 2"
       >
         <path d="M-477.55 756.57L1254.51 -243.41" />
+        <path d="M-782.39 676.57L949.67 -323.41" />
         <path d="M977.37 788.58L-754.67 -211.42" />
         <path d="M1143.65 692.58L-588.39 -307.42" />
+        <path d="M1337.65 612.57L-394.41 -387.41" />
       </g>
 
       <g fillRule="evenodd" clipRule="evenodd">

@@ -10,20 +10,27 @@ import { HelloSection } from "@/components/hello-section";
 import { Hero } from "@/components/hero";
 import { InsightsSection } from "@/components/insights-section";
 import { LinedSection } from "@/components/lined-section";
+import { OverviewSection } from "@/components/overview-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { Separator } from "@/components/separator";
-import { SiteHeader } from "@/components/site-header";
+import { SocialLinks } from "@/components/social-links";
 import { SponsorsSection } from "@/components/sponsors-section";
 import { StackSection } from "@/components/stack-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 
 export default function Home() {
   return (
-    <>
-      <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl px-6 pb-24">
+    <main className="max-w-screen overflow-x-clip px-2">
+      <div className="mx-auto w-full max-w-3xl pb-24">
         <Hero />
         <Separator />
+        <OverviewSection />
+        <section
+          aria-label="Social links"
+          className="screen-line-top screen-line-bottom border-x border-line p-4"
+        >
+          <SocialLinks />
+        </section>
         <ContributionsGraph />
         <Separator />
         <HelloSection />
@@ -57,7 +64,7 @@ export default function Home() {
         <InsightsSection />
         <Separator />
         <SponsorsSection />
-      </main>
-    </>
+      </div>
+    </main>
   );
 }

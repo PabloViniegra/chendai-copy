@@ -19,30 +19,22 @@ export function LinedSection({
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className={`screen-line-top relative pt-10 pb-12 sm:pt-12 ${
-        withBottomBorder ? "screen-line-bottom" : ""
-      } ${className ?? ""}`}
+      className={`screen-line-top screen-line-bottom border-x border-line ${withBottomBorder ? "screen-line-bottom" : ""} ${className ?? ""}`}
     >
-      <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-[100px_1fr]">
-        <div className="relative pl-4 sm:pl-6">
-          <span
-            aria-hidden="true"
-            className="absolute top-0 bottom-0 left-0 w-px bg-line"
-          />
-          <h2
-            id={`${id}-heading`}
-            className="text-base font-medium tracking-tight"
+      <header className="screen-line-bottom px-4 py-4 sm:py-5">
+        <h2
+          id={`${id}-heading`}
+          className="text-3xl font-medium tracking-tight text-balance"
+        >
+          <a
+            href={`#${id}`}
+            className="transition-colors hover:text-foreground/70"
           >
-            <a
-              href={`#${id}`}
-              className="transition-colors hover:text-foreground/70"
-            >
-              {title}
-            </a>
-          </h2>
-        </div>
-        <div className="mt-6 min-w-0 sm:mt-0 sm:pl-2">{children}</div>
-      </div>
+            {title}
+          </a>
+        </h2>
+      </header>
+      <div className="min-w-0 p-4">{children}</div>
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ChanhDaiMark } from "./chanhdai-mark";
 import { CloseIcon, MenuIcon } from "./icons";
 
 type NavMobileProps = {
@@ -59,9 +60,10 @@ export function NavMobile({ items }: NavMobileProps) {
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="font-mono text-sm font-medium tracking-tight"
+              aria-label="Home"
+              className="flex"
             >
-              chanhdai.com
+              <ChanhDaiMark className="h-8 w-16" />
             </Link>
             <button
               type="button"

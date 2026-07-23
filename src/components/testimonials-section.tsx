@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 import { ArrowRightIcon } from "./icons";
 
@@ -14,10 +15,13 @@ function Card({ testimonial }: { testimonial: Testimonial }) {
       </blockquote>
 
       <footer className="mt-auto flex items-center gap-2.5">
-        <img
+        <Image
           src={testimonial.authorAvatar}
           alt={testimonial.authorName}
+          width={32}
+          height={32}
           loading="lazy"
+          unoptimized
           className="size-8 rounded-full bg-accent-muted grayscale transition duration-300 group-hover/testimonial:grayscale-0"
         />
         <div className="flex flex-col text-sm leading-tight">
@@ -66,7 +70,7 @@ export function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="group/marquee"
+      className="screen-line-top screen-line-bottom border-x border-line"
     >
       <h2
         id="testimonials-heading"
@@ -99,9 +103,9 @@ export function TestimonialsSection() {
 
       <div className="mt-6 flex justify-center">
         <a
-          href="https://x.com/iamncdai"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/testimonials"
+          target="_self"
+          rel=""
           className="inline-flex items-center gap-1.5 rounded-full border border-line bg-background px-4 py-1.5 text-sm transition-colors hover:bg-accent-muted"
         >
           All builders

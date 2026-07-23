@@ -46,7 +46,10 @@ export function ContributionsGraph() {
   const height = TOP_PAD + 7 * ROW_H + BOTTOM_PAD;
 
   return (
-    <section aria-labelledby="contributions-heading" className="mt-16 sm:mt-24">
+    <section
+      aria-labelledby="contributions-heading"
+      className="screen-line-top-none screen-line-bottom border-x border-line p-4"
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2
           id="contributions-heading"

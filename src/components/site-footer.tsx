@@ -140,6 +140,12 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
+
+        <div className="screen-line-bottom relative overflow-hidden py-5 after:z-1 after:bg-foreground/15">
+          <div className="text-center font-mono text-[clamp(2.5rem,13vw,7rem)] font-bold leading-none tracking-[0.24em] text-foreground/10 transition-colors duration-300 hover:text-foreground/25">
+            CHANHDAI
+          </div>
+        </div>
       </div>
 
       <div className="h-12" />

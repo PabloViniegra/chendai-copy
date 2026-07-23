@@ -1,100 +1,54 @@
 import { AvatarToggle } from "./avatar-toggle";
+import { FlipSentences } from "./flip-sentences";
 import { HeroGeometry } from "./hero-geometry";
-import { LinkIcon, MapPinIcon } from "./icons";
-import { SocialLinks } from "./social-links";
+
+function VerifiedIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-label="Verified"
+      role="img"
+      className="size-4 text-foreground/70"
+    >
+      <title>Verified</title>
+      <path d="M24 12a4.45 4.45 0 0 0-2.56-3.91 4.44 4.44 0 0 0-.95-4.58 4.44 4.44 0 0 0-4.58-.95A4.44 4.44 0 0 0 12 0a4.43 4.43 0 0 0-3.91 2.56 4.44 4.44 0 0 0-4.58.95 4.44 4.44 0 0 0-.95 4.58A4.45 4.45 0 0 0 0 12a4.45 4.45 0 0 0 2.56 3.91 4.44 4.44 0 0 0 .95 4.58 4.44 4.44 0 0 0 4.58.95A4.44 4.44 0 0 0 12 24a4.44 4.44 0 0 0 3.91-2.56 4.44 4.44 0 0 0 4.58-.95 4.44 4.44 0 0 0 .95-4.58A4.45 4.45 0 0 0 24 12Zm-13.71 4.92-4.38-4.38 1.65-1.66 2.65 2.65 5.62-6.12 1.72 1.59-7.26 7.92Z" />
+    </svg>
+  );
+}
 
 export function Hero() {
   return (
     <section
+      id="cover"
       aria-labelledby="hero-name"
-      className="relative isolate flex flex-col items-center pt-16 text-center"
+      className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-hidden border-x border-line"
     >
-      <HeroGeometry />
-      <p className="font-mono text-xs tracking-widest text-muted">FIG_001</p>
+      <figure className="relative col-span-2 min-h-[220px] p-2 sm:col-span-1 sm:col-start-2 sm:min-h-[280px] sm:p-4">
+        <HeroGeometry />
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-muted select-none sm:right-4">
+          FIG_001
+        </figcaption>
+      </figure>
 
-      <div className="mt-8">
-        <AvatarToggle />
+      <div className="flex flex-col sm:row-span-2 sm:row-start-1">
+        <div className="screen-line-top mt-auto shrink-0 border-r border-line">
+          <AvatarToggle />
+        </div>
       </div>
 
-      <h1
-        id="hero-name"
-        className="mt-8 text-4xl font-medium tracking-tight md:text-5xl"
-      >
-        Chánh Đại
-      </h1>
-
-      <p className="mt-3 text-balance text-lg text-foreground/70">
-        Creating with code. Small details matter.
-      </p>
-
-      <div className="mt-10 w-full text-left">
-        <h2 className="font-mono text-xs tracking-widest text-muted">
-          Overview
-        </h2>
-
-        <dl className="mt-4 space-y-2 text-sm">
-          <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="sr-only">Role</dt>
-            <dd>
-              <span className="text-foreground/70">Design Engineer @</span>
-              <a
-                href="#experience-shadcncraft"
-                className="font-medium underline-offset-4 hover:underline"
-              >
-                shadcncraft
-              </a>
-            </dd>
+      <div className="flex flex-col">
+        <div className="z-1 mt-auto border-t border-line">
+          <div className="flex items-center gap-2 px-4 pt-3">
+            <h1
+              id="hero-name"
+              className="-translate-y-px text-[2rem]/none font-medium tracking-tight"
+            >
+              Chánh Đại
+            </h1>
+            <VerifiedIcon />
           </div>
-
-          <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="sr-only">Role</dt>
-            <dd>
-              <span className="text-foreground/70">Founder @</span>
-              <a
-                href="#experience-quaric"
-                className="font-medium underline-offset-4 hover:underline"
-              >
-                Quaric
-              </a>
-            </dd>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <dt className="sr-only">Location</dt>
-            <dd className="flex items-center gap-1.5 text-foreground/70">
-              <MapPinIcon className="size-3.5" />
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Ho+Chi+Minh+City%2C+Viet+Nam"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground hover:underline underline-offset-4"
-              >
-                Ho Chi Minh City, Viet Nam
-              </a>
-            </dd>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <dt className="sr-only">Website</dt>
-            <dd className="flex items-center gap-1.5 text-foreground/70">
-              <LinkIcon className="size-3.5" />
-              <a
-                href="https://chanhdai.com"
-                className="hover:text-foreground hover:underline underline-offset-4"
-              >
-                chanhdai.com
-              </a>
-            </dd>
-          </div>
-
-          <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <dt className="sr-only">Pronouns</dt>
-            <dd className="text-foreground/70">he/him</dd>
-          </div>
-        </dl>
-
-        <div className="mt-8">
-          <SocialLinks />
+          <FlipSentences className="h-[3.125rem] border-t border-line py-2 pl-4 sm:h-9" />
         </div>
       </div>
     </section>

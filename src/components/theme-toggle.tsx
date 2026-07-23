@@ -20,6 +20,10 @@ export function ThemeToggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
     document.documentElement.classList.toggle("dark", next === "dark");
+    document.documentElement.dataset.theme = next;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", next === "dark" ? "#09090b" : "#ffffff");
     try {
       localStorage.setItem("theme", next);
     } catch {}

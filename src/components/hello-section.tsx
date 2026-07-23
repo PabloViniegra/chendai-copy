@@ -3,7 +3,7 @@ export function HelloSection() {
     <section
       id="hello"
       aria-labelledby="hello-heading"
-      className="mt-16 sm:mt-24"
+      className="screen-line-top screen-line-bottom border-x border-line p-4"
     >
       <h2
         id="hello-heading"

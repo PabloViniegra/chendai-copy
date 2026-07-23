@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, IBM_Plex_Serif } from "next/font/google";
 import { CommandPalette } from "@/components/command-palette";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { SiteBottomNav } from "@/components/site-bottom-nav";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
@@ -30,7 +32,7 @@ const ibmPlexSerif = IBM_Plex_Serif({
   display: "swap",
 });
 
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d))document.documentElement.classList.add('dark');}catch(e){}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.dataset.theme=t;document.documentElement.dataset.avatarLights=localStorage.getItem('avatarLights')||'on';}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: "Chánh Đại – Design Engineer",
@@ -49,6 +51,11 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="preload" as="image" href="/avatars/avatar-light-off.webp" />
+        <link rel="preload" as="image" href="/avatars/avatar-light-on.webp" />
+        <link rel="preload" as="image" href="/avatars/avatar-dark-off.webp" />
+        <link rel="preload" as="image" href="/avatars/avatar-dark-on.webp" />
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: no-FOUC theme bootstrap
           dangerouslySetInnerHTML={{ __html: themeScript }}
@@ -57,6 +64,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
         <SiteFooter />
+        <SiteBottomNav />
+        <ScrollToTop />
         <CommandPalette links={commandPaletteLinks} />
       </body>
     </html>

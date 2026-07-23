@@ -25,13 +25,16 @@ const variants: Record<Variant, { src: string; alt: string }> = {
 };
 
 export function AvatarToggle() {
-  const [lightsOn, setLightsOn] = useState(false);
+  const [lightsOn, setLightsOn] = useState(true);
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     setIsDark(document.documentElement.classList.contains("dark"));
+    try {
+      setLightsOn(localStorage.getItem("avatarLights") !== "off");
+    } catch {}
 
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -53,7 +56,15 @@ export function AvatarToggle() {
   return (
     <button
       type="button"
-      onClick={() => setLightsOn((v) => !v)}
+      onClick={() =>
+        setLightsOn((value) => {
+          const next = !value;
+          try {
+            localStorage.setItem("avatarLights", next ? "on" : "off");
+          } catch {}
+          return next;
+        })
+      }
       aria-label={`Turn lights ${lightsOn ? "off" : "on"}`}
       aria-pressed={lightsOn}
       className="group relative inline-block rounded-full transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
