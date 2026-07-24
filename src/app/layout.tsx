@@ -4,6 +4,7 @@ import { CommandPalette } from "@/components/command-palette-loader";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteBottomNav } from "@/components/site-bottom-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const commandPaletteLinks = [
@@ -28,11 +29,17 @@ const geistMono = Geist_Mono({
 const ibmPlexSerif = IBM_Plex_Serif({
   variable: "--font-ibm-plex-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
   display: "swap",
 });
 
 const themeScript = `(function(){try{var t=localStorage.getItem('theme:v1')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.dataset.theme=t;document.documentElement.dataset.avatarLights=localStorage.getItem('avatarLights:v1')||'on';}catch(e){}})();`;
+
+const speculationRules = {
+  prefetch: [
+    { where: { href_matches: "/*" }, eagerness: "moderate" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "Chánh Đại – Design Engineer",
@@ -52,12 +59,24 @@ export default function RootLayout({
     >
       <head>
         <meta name="theme-color" content="#ffffff" />
-        <link rel="preload" as="image" href="/avatars/avatar-light-on.webp" />
+        <link rel="preconnect" href="https://unavatar.io" crossOrigin="anonymous" />
         <link
           rel="preload"
           as="image"
-          href="/avatars/avatar-dark-on.webp"
+          href="/avatars/320/avatar-light-on.webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/avatars/320/avatar-dark-on.webp"
           media="(prefers-color-scheme: dark)"
+          fetchPriority="high"
+        />
+        <script
+          type="speculationrules"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: prerender API
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }}
         />
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: no-FOUC theme bootstrap
@@ -71,6 +90,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <SiteHeader />
         {children}
         <SiteFooter />
         <SiteBottomNav />

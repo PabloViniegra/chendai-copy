@@ -1,9 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { COMMAND_PALETTE_OPEN_EVENT } from "@/lib/command-palette-events";
 import { SearchIcon } from "./icons";
-
-const OPEN_EVENT = "command-palette:open";
 
 type Action = {
   id: string;
@@ -94,10 +93,10 @@ export function CommandPalette({ links }: CommandPaletteProps) {
         setOpen((value) => (value ? false : value));
       }
     };
-    window.addEventListener(OPEN_EVENT, onOpen);
+    window.addEventListener(COMMAND_PALETTE_OPEN_EVENT, onOpen);
     window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener(OPEN_EVENT, onOpen);
+      window.removeEventListener(COMMAND_PALETTE_OPEN_EVENT, onOpen);
       window.removeEventListener("keydown", onKey);
     };
   }, []);
@@ -406,8 +405,4 @@ function KbdHint({ children }: { children: React.ReactNode }) {
       {children}
     </kbd>
   );
-}
-
-export function openCommandPalette() {
-  window.dispatchEvent(new Event(OPEN_EVENT));
 }

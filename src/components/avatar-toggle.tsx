@@ -7,19 +7,19 @@ type Variant = "light-off" | "light-on" | "dark-off" | "dark-on";
 
 const variants: Record<Variant, { src: string; alt: string }> = {
   "light-off": {
-    src: "/avatars/avatar-light-off.webp",
+    src: "/avatars/320/avatar-light-off.webp",
     alt: "Avatar with lights off in light mode",
   },
   "light-on": {
-    src: "/avatars/avatar-light-on.webp",
+    src: "/avatars/320/avatar-light-on.webp",
     alt: "Avatar with lights on in light mode",
   },
   "dark-off": {
-    src: "/avatars/avatar-dark-off.webp",
+    src: "/avatars/320/avatar-dark-off.webp",
     alt: "Avatar with lights off in dark mode",
   },
   "dark-on": {
-    src: "/avatars/avatar-dark-on.webp",
+    src: "/avatars/320/avatar-dark-on.webp",
     alt: "Avatar with lights on in dark mode",
   },
 };
@@ -72,9 +72,9 @@ export function AvatarToggle() {
       <Image
         src={src}
         alt={alt}
-        width={160}
-        height={160}
-        priority
+        width={320}
+        height={320}
+        sizes="160px"
         className="size-40 rounded-full border border-line bg-accent-muted object-cover"
       />
     </button>

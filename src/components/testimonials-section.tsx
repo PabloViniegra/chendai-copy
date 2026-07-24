@@ -20,7 +20,7 @@ for (let i = 0; i < TESTIMONIALS.length; i++) {
 
 function Card({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <article className="group/testimonial relative mx-0.5 flex w-xs shrink-0 flex-col gap-4 rounded-xl border border-line bg-background p-4 transition-colors hover:bg-accent-muted">
+    <article className="group/testimonial cv-card relative mx-0.5 flex w-xs shrink-0 flex-col gap-4 rounded-xl border border-line bg-background p-4 transition-colors hover:bg-accent-muted">
       <blockquote className="font-serif text-base text-foreground/85">
         {testimonial.quote}
       </blockquote>
@@ -32,6 +32,7 @@ function Card({ testimonial }: { testimonial: Testimonial }) {
           width={32}
           height={32}
           loading="lazy"
+          decoding="async"
           unoptimized
           className="size-8 rounded-full bg-accent-muted grayscale transition duration-300 group-hover/testimonial:grayscale-0"
         />

@@ -121,7 +121,7 @@ export const blogPosts: BlogPost[] = [
     title: "Welcome to chanhdai.com",
     href: "/blog/welcome",
     date: "14.02.2025",
-    image: "/blog/welcome.png",
+    image: "/blog/welcome.webp",
     imageWidth: 1200,
     imageHeight: 630,
   },

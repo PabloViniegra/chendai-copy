@@ -24,7 +24,7 @@ export function ExperienceSection() {
         <article
           id={`experience-${exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
           key={exp.company}
-          className="space-y-5 border-b border-line pb-8 last:border-b-0 last:pb-0"
+          className="cv-card space-y-5 border-b border-line pb-8 last:border-b-0 last:pb-0"
         >
           <header className="flex items-center gap-3">
             <Image

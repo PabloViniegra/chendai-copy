@@ -1,6 +1,6 @@
 "use client";
 
-import { openCommandPalette } from "./command-palette";
+import { openCommandPalette } from "@/lib/command-palette-events";
 import { SearchIcon } from "./icons";
 import { NavMobile } from "./nav-mobile";
 

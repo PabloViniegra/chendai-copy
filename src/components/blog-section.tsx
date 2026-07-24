@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
 import { LinedSection } from "@/components/lined-section";
@@ -25,20 +24,26 @@ export function BlogSection() {
         {visible.map((post) => (
           <article
             key={post.href}
-            className="group/post relative flex flex-col gap-2 rounded-lg p-2 transition-colors hover:bg-accent-muted"
+            className="group/post cv-card relative flex flex-col gap-2 rounded-lg p-2 transition-colors hover:bg-accent-muted"
           >
             {post.image && (
               <div className="relative aspect-[1200/630] overflow-hidden rounded-lg">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={post.imageWidth}
-                  height={post.imageHeight}
-                  loading="lazy"
-                  quality={100}
-                  className="size-full object-cover grayscale transition-[filter] duration-300 ease-out group-hover/post:grayscale-0"
-                  unoptimized
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={`${post.image.replace(/\.webp$/, "")}-640.webp 640w, ${post.image} 1200w`}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    width={post.imageWidth}
+                    height={post.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                    className="size-full object-cover grayscale transition-[filter] duration-300 ease-out group-hover/post:grayscale-0"
+                  />
+                </picture>
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 rounded-lg inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15"
