@@ -39,11 +39,11 @@ export function CertificationsSection() {
 function CertRow({ cert }: { cert: (typeof certifications)[number] }) {
   return (
     <article className="list-row group/cert relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
-      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
+      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted transition-transform duration-200 ease-out group-hover/cert:translate-x-1 group-focus-within/cert:translate-x-1">
         <CheckCircleIcon className="size-4" />
       </div>
 
-      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2 transition-transform duration-200 ease-out group-hover/cert:translate-x-1 group-focus-within/cert:translate-x-1">
         <h3 className="text-base font-medium leading-tight tracking-tight text-balance">
           <a
             href={cert.credentialURL}
@@ -62,9 +62,10 @@ function CertRow({ cert }: { cert: (typeof certifications)[number] }) {
               <span className="ml-0.5">{cert.issuer}</span>
             </dd>
           </div>
-          <span aria-hidden className="text-line">
-            |
-          </span>
+          <div
+            aria-hidden
+            className="h-3 w-px border-l border-dashed border-line"
+          />
           <div>
             <dt className="sr-only">Issued on</dt>
             <dd className="font-mono">{formatCertDate(cert.issueDate)}</dd>
@@ -72,7 +73,7 @@ function CertRow({ cert }: { cert: (typeof certifications)[number] }) {
         </dl>
       </div>
 
-      <ArrowUpRightIcon className="size-4 shrink-0 text-muted" />
+      <ArrowUpRightIcon className="size-4 shrink-0 text-muted transition-transform duration-200 ease-out group-hover/cert:translate-x-1 group-focus-within/cert:translate-x-1" />
     </article>
   );
 }

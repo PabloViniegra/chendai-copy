@@ -58,11 +58,11 @@ function BookmarkRow({ bookmark }: { bookmark: (typeof bookmarks)[number] }) {
 
   return (
     <article className="list-row group/bookmark relative flex items-center border-b border-line first:border-t pr-2 transition-colors hover:bg-accent-muted">
-      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
+      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted transition-transform duration-200 ease-out group-hover/bookmark:translate-x-1 group-focus-within/bookmark:translate-x-1">
         <Icon className="size-4" />
       </div>
 
-      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2">
+      <div className="flex-1 space-y-1 border-l border-dashed border-line p-4 pr-2 transition-transform duration-200 ease-out group-hover/bookmark:translate-x-1 group-focus-within/bookmark:translate-x-1">
         <h3 className="text-base font-medium leading-tight tracking-tight text-balance">
           <a
             href={bookmark.url}
@@ -80,18 +80,20 @@ function BookmarkRow({ bookmark }: { bookmark: (typeof bookmarks)[number] }) {
                 <dt className="sr-only">Author</dt>
                 <dd>{bookmark.author}</dd>
               </div>
-              <span aria-hidden className="text-line">
-                |
-              </span>
+              <div
+                aria-hidden
+                className="h-3 w-px border-l border-dashed border-line"
+              />
             </>
           )}
           <div>
             <dt className="sr-only">Category</dt>
             <dd>{bookmark.category}</dd>
           </div>
-          <span aria-hidden className="text-line">
-            |
-          </span>
+          <div
+            aria-hidden
+            className="h-3 w-px border-l border-dashed border-line"
+          />
           <div>
             <dt className="sr-only">Bookmarked on</dt>
             <dd className="font-mono">
@@ -101,7 +103,7 @@ function BookmarkRow({ bookmark }: { bookmark: (typeof bookmarks)[number] }) {
         </dl>
       </div>
 
-      <ArrowUpRightIcon className="size-4 shrink-0 text-muted" />
+      <ArrowUpRightIcon className="size-4 shrink-0 text-muted transition-transform duration-200 ease-out group-hover/bookmark:translate-x-1 group-focus-within/bookmark:translate-x-1" />
     </article>
   );
 }

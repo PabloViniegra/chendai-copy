@@ -79,7 +79,7 @@ function ProjectCard({
                 <ul className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
                     <li key={tech}>
-                      <TechBadge>{tech}</TechBadge>
+                      <TechBadge variant="outline">{tech}</TechBadge>
                     </li>
                   ))}
                 </ul>

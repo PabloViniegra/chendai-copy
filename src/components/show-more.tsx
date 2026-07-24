@@ -16,16 +16,18 @@ export function ShowMore({ limit, total, children }: ShowMoreProps) {
   }
 
   return (
-    <>
+    <div>
       {expanded ? children : null}
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        aria-expanded={expanded}
-        className="mt-2 font-mono text-xs tracking-widest text-muted transition-colors hover:text-foreground focus-visible:text-foreground"
-      >
-        {expanded ? "Show less" : "Show more"}
-      </button>
-    </>
+      <div className="mt-4 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
+        >
+          {expanded ? "Show less" : "Show more"}
+        </button>
+      </div>
+    </div>
   );
 }

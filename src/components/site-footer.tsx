@@ -144,7 +144,7 @@ export function SiteFooter() {
         <div className="screen-line-bottom relative overflow-hidden py-5 after:z-1 after:bg-foreground/15">
           <div
             aria-hidden="true"
-            className="text-center font-mono text-[clamp(2.5rem,13vw,7rem)] font-bold leading-none tracking-[0.24em] text-foreground/45 transition-colors duration-300 hover:text-foreground/60"
+            className="text-center font-mono text-[clamp(2.5rem,13vw,7rem)] font-bold leading-none tracking-[0.24em] text-foreground/70 transition-colors duration-300 hover:text-foreground"
           >
             CHANHDAI
           </div>

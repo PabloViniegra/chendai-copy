@@ -160,7 +160,7 @@ export function OverviewSection() {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute top-px bottom-0 left-1/2 hidden w-px -translate-x-2.25 bg-[linear-gradient(to_bottom,var(--line)_4px,transparent_2px)] bg-size-[1px_6px] sm:block"
+          className="pointer-events-none absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-px border-l border-dashed border-line sm:block"
         />
       </div>
     </section>

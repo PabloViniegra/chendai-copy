@@ -39,11 +39,11 @@ export function AwardsSection() {
 function AwardRow({ award }: { award: (typeof awards)[number] }) {
   return (
     <article className="list-row group/award flex items-center border-b border-line first:border-t transition-colors hover:bg-accent-muted">
-      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted">
+      <div className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-line bg-accent-muted text-muted transition-transform duration-200 ease-out group-hover/award:translate-x-1 group-focus-within/award:translate-x-1">
         <AwardIcon className="size-4" />
       </div>
 
-      <div className="flex-1 border-l border-dashed border-line">
+      <div className="flex-1 border-l border-dashed border-line transition-transform duration-200 ease-out group-hover/award:translate-x-1 group-focus-within/award:translate-x-1">
         <div className="flex items-center gap-2 p-4 pr-2">
           <div className="min-w-0 flex-1">
             <h3 className="text-base font-medium leading-tight tracking-tight text-balance">
@@ -54,16 +54,18 @@ function AwardRow({ award }: { award: (typeof awards)[number] }) {
                 <dt className="sr-only">Prize</dt>
                 <dd>{award.prize}</dd>
               </div>
-              <span aria-hidden className="text-line">
-                |
-              </span>
+              <div
+                aria-hidden
+                className="h-3 w-px border-l border-dashed border-line"
+              />
               <div>
                 <dt className="sr-only">Awarded in</dt>
                 <dd className="font-mono">{formatAwardDate(award.date)}</dd>
               </div>
-              <span aria-hidden className="text-line">
-                |
-              </span>
+              <div
+                aria-hidden
+                className="h-3 w-px border-l border-dashed border-line"
+              />
               <div>
                 <dt className="sr-only">Received in Grade</dt>
                 <dd>{award.grade}</dd>
