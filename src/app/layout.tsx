@@ -35,12 +35,6 @@ const ibmPlexSerif = IBM_Plex_Serif({
 
 const themeScript = `(function(){try{var t=localStorage.getItem('theme:v1')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.dataset.theme=t;document.documentElement.dataset.avatarLights=localStorage.getItem('avatarLights:v1')||'on';}catch(e){}})();`;
 
-const speculationRules = {
-  prefetch: [
-    { where: { href_matches: "/*" }, eagerness: "moderate" },
-  ],
-};
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://chanhdai.com"),
   title: {
@@ -78,11 +72,6 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#ffffff" />
         <link rel="preconnect" href="https://unavatar.io" crossOrigin="anonymous" />
-        <script
-          type="speculationrules"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: prerender API
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }}
-        />
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: no-FOUC theme bootstrap
           dangerouslySetInnerHTML={{ __html: themeScript }}
