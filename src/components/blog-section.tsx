@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
 import { LinedSection } from "@/components/lined-section";
@@ -28,24 +29,16 @@ export function BlogSection() {
           >
             {post.image && (
               <div className="relative aspect-[1200/630] overflow-hidden rounded-lg">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={`/blog/640/${post.image
-                      .replace("/blog/", "")
-                      .replace(/\.webp$/, "")}-640.webp 640w, ${post.image} 1200w`}
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                  />
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    width={post.imageWidth}
-                    height={post.imageHeight}
-                    loading="lazy"
-                    decoding="async"
-                    className="size-full object-cover grayscale transition-[filter] duration-300 ease-out group-hover/post:grayscale-0"
-                  />
-                </picture>
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  width={post.imageWidth}
+                  height={post.imageHeight}
+                  sizes="(max-width: 640px) calc(100vw - 36px), 348px"
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-cover grayscale transition-[filter] duration-300 ease-out group-hover/post:grayscale-0"
+                />
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 rounded-lg inset-ring-1 inset-ring-black/15 dark:inset-ring-white/15"

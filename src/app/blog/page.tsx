@@ -31,7 +31,7 @@ export default function BlogPage() {
                   alt={post.title}
                   width={post.imageWidth}
                   height={post.imageHeight}
-                  unoptimized
+                  sizes="(max-width: 640px) calc(100vw - 52px), 348px"
                   className="size-full object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
                 />
               </div>

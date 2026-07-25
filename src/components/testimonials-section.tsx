@@ -31,9 +31,9 @@ function Card({ testimonial }: { testimonial: Testimonial }) {
           alt={testimonial.authorName}
           width={32}
           height={32}
+          sizes="32px"
           loading="lazy"
           decoding="async"
-          unoptimized
           className="size-8 rounded-full bg-accent-muted grayscale transition duration-300 group-hover/testimonial:grayscale-0"
         />
         <div className="flex flex-col text-sm leading-tight">

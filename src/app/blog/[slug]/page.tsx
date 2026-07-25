@@ -74,7 +74,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             alt={post.title}
             width={post.imageWidth}
             height={post.imageHeight}
-            unoptimized
+            sizes="(max-width: 768px) calc(100vw - 64px), 720px"
+            preload
             priority
             className="h-auto w-full"
           />

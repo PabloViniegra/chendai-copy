@@ -30,7 +30,6 @@ function ProjectCard({
                   width={project.logoWidth ?? 24}
                   height={project.logoHeight ?? 24}
                   className="size-6 select-none rounded-sm object-contain grayscale transition-all group-hover/project:grayscale-0 group-open/project:grayscale-0"
-                  unoptimized
                 />
               ) : (
                 <span className="flex size-6 items-center justify-center rounded-md border border-line bg-accent-muted font-mono text-[10px] text-muted">
