@@ -31,7 +31,9 @@ export function BlogSection() {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet={`${post.image.replace(/\.webp$/, "")}-640.webp 640w, ${post.image} 1200w`}
+                    srcSet={`/blog/640/${post.image
+                      .replace("/blog/", "")
+                      .replace(/\.webp$/, "")}-640.webp 640w, ${post.image} 1200w`}
                     sizes="(max-width: 640px) 100vw, 50vw"
                   />
                   <img
