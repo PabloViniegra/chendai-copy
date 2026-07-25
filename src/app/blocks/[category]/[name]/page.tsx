@@ -1,17 +1,6 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-const blocks = [
-  { name: "Hero 01", category: "hero", slug: "hero-01" },
-  { name: "Blog 01", category: "blog", slug: "blog-01" },
-  { name: "Experience 01", category: "experience", slug: "experience-01" },
-  { name: "Metrics 01", category: "metrics", slug: "metrics-01" },
-  {
-    name: "Social Proof 01",
-    category: "social-proof",
-    slug: "social-proof-01",
-  },
-  { name: "Team 01", category: "team", slug: "team-01" },
-];
+import { blocks } from "@/data/blocks";
 
 type BlockPageProps = {
   params: Promise<{ category: string; name: string }>;
@@ -22,6 +11,22 @@ export function generateStaticParams() {
     category: block.category,
     name: block.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlockPageProps): Promise<Metadata> {
+  const { category, name } = await params;
+  const block = blocks.find(
+    (item) => item.category === category && item.slug === name,
+  );
+  if (!block) return { title: "Block not found" };
+  return {
+    title: `${block.name} block`,
+    description: `${block.name} – production-ready block from the Chánh Đại registry.`,
+    alternates: { canonical: `/blocks/${category}/${name}` },
+    robots: { index: false, follow: true },
+  };
 }
 
 export default async function BlockPage({ params }: BlockPageProps) {

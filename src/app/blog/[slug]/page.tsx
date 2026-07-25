@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +12,33 @@ export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.href.replace("/blog/", ""),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((item) => item.href === `/blog/${slug}`);
+  if (!post) return { title: "Post not found" };
+  return {
+    title: post.title,
+    description: `${post.title} – ${post.date}.`,
+    alternates: { canonical: post.href },
+    robots: { index: false, follow: true },
+    openGraph: {
+      title: post.title,
+      description: `${post.title} – ${post.date}.`,
+      url: post.href,
+      type: "article",
+      images: [{ url: post.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: `${post.title} – ${post.date}.`,
+      images: [post.image],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

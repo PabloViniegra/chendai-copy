@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-const blocks = [
-  { name: "Hero 01", href: "/blocks/hero/hero-01" },
-  { name: "Blog 01", href: "/blocks/blog/blog-01" },
-  { name: "Experience 01", href: "/blocks/experience/experience-01" },
-  { name: "Metrics 01", href: "/blocks/metrics/metrics-01" },
-  { name: "Social Proof 01", href: "/blocks/social-proof/social-proof-01" },
-  { name: "Team 01", href: "/blocks/team/team-01" },
-];
+import { blocks } from "@/data/blocks";
 
 export default function BlocksPage() {
   return (
@@ -24,20 +16,26 @@ export default function BlocksPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
-        {blocks.map((block) => (
-          <Link
-            key={block.href}
-            href={block.href}
-            className="flex min-h-24 items-center justify-between border-b border-r border-line p-4 font-medium transition-colors hover:bg-accent-muted"
-          >
-            {block.name}
-            <span aria-hidden className="text-muted">
-              →
-            </span>
-          </Link>
-        ))}
-      </div>
+      <ul className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
+        {blocks.map((block) => {
+          const href = `/blocks/${block.category}/${block.slug}`;
+          return (
+            <li key={href} className="border-b border-r border-line">
+              <Link
+                href={href}
+                className="flex min-h-24 items-center justify-between p-4 font-medium transition-colors hover:bg-accent-muted"
+              >
+                <h2 className="text-base font-medium tracking-tight">
+                  {block.name}
+                </h2>
+                <span aria-hidden className="text-muted">
+                  →
+                </span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </main>
   );
 }

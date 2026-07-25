@@ -42,8 +42,26 @@ const speculationRules = {
 };
 
 export const metadata: Metadata = {
-  title: "Chánh Đại – Design Engineer",
+  metadataBase: new URL("https://chanhdai.com"),
+  title: {
+    default: "Chánh Đại – Design Engineer",
+    template: "%s – Chánh Đại",
+  },
   description: "Creating with code. Small details matter.",
+  openGraph: {
+    title: "Chánh Đại – Design Engineer",
+    description: "Creating with code. Small details matter.",
+    siteName: "Chánh Đại",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chánh Đại – Design Engineer",
+    description: "Creating with code. Small details matter.",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

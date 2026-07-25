@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { components } from "@/data/components-list";
 
@@ -9,6 +10,22 @@ export function generateStaticParams() {
   return components.map((component) => ({
     slug: component.href.replace("/components/", ""),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: ComponentPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const component = components.find(
+    (item) => item.href === `/components/${slug}`,
+  );
+  if (!component) return { title: "Component not found" };
+  return {
+    title: component.name,
+    description: `${component.name} – polished, reusable interface primitive from the Chánh Đại registry.`,
+    alternates: { canonical: component.href },
+    robots: { index: false, follow: true },
+  };
 }
 
 export default async function ComponentPage({ params }: ComponentPageProps) {
