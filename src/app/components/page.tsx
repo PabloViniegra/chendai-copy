@@ -17,18 +17,24 @@ export default function ComponentsPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 border-t border-line sm:grid-cols-2 md:grid-cols-3">
+      <ul className="grid grid-cols-1 border-t border-line sm:grid-cols-2 md:grid-cols-3">
         {components.map((component) => (
-          <Link
+          <li
             key={component.href}
-            href={component.href}
-            className="group flex min-h-24 items-center justify-between gap-3 border-b border-r border-line p-4 transition-colors hover:bg-accent-muted"
+            className="group border-b border-r border-line"
           >
-            <span className="font-medium tracking-tight">{component.name}</span>
-            <ArrowRightIcon className="size-4 shrink-0 text-muted transition-transform group-hover:translate-x-1" />
-          </Link>
+            <Link
+              href={component.href}
+              className="flex min-h-24 items-center justify-between gap-3 p-4 transition-colors hover:bg-accent-muted"
+            >
+              <h2 className="text-base font-medium tracking-tight">
+                {component.name}
+              </h2>
+              <ArrowRightIcon className="size-4 shrink-0 text-muted transition-transform group-hover:translate-x-1" />
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </main>
   );
 }

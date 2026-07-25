@@ -71,7 +71,11 @@ export default function RootLayout({
     >
       <head>
         <meta name="theme-color" content="#ffffff" />
-        <link rel="preconnect" href="https://unavatar.io" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://unavatar.io"
+          crossOrigin="anonymous"
+        />
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: no-FOUC theme bootstrap
           dangerouslySetInnerHTML={{ __html: themeScript }}

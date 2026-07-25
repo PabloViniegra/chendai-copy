@@ -44,7 +44,9 @@ export function HeroGeometry() {
       ([entry]) => {
         if (!entry?.isIntersecting) return;
         observer.disconnect();
-        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        window.addEventListener("mousemove", handleMouseMove, {
+          passive: true,
+        });
       },
       { rootMargin: "80px" },
     );
@@ -65,10 +67,7 @@ export function HeroGeometry() {
   }, []);
 
   const handlePointerDown = () => {
-    faceFillRef.current?.setAttribute(
-      "transform",
-      FACE_TRANSLATE_PRESSED,
-    );
+    faceFillRef.current?.setAttribute("transform", FACE_TRANSLATE_PRESSED);
     strokeRef.current?.setAttribute("d", STROKE_PRESSED);
   };
 

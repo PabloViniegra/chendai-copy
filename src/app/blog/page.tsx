@@ -39,7 +39,10 @@ export default function BlogPage() {
                 <h2 className="font-medium leading-snug tracking-tight group-hover:underline group-hover:underline-offset-4">
                   {post.title}
                 </h2>
-                <time className="mt-2 block font-mono text-xs text-muted">
+                <time
+                  dateTime={post.date.split(".").reverse().join("-")}
+                  className="mt-2 block font-mono text-xs text-muted"
+                >
                   {post.date}
                 </time>
               </div>

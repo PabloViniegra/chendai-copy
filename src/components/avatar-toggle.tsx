@@ -30,7 +30,7 @@ export function AvatarToggle() {
   const [variant, setVariant] = useState<Variant>(DEFAULT_VARIANT);
 
   useEffect(() => {
-    setVariant((current) => {
+    setVariant(() => {
       const isDark = document.documentElement.classList.contains("dark");
       const lightsOn = localStorage.getItem("avatarLights:v1") !== "off";
       return `${isDark ? "dark" : "light"}-${lightsOn ? "on" : "off"}` as Variant;
@@ -57,9 +57,11 @@ export function AvatarToggle() {
     <button
       type="button"
       onClick={() => {
-        const next = (lightsOn
-          ? variant.replace("-on", "-off")
-          : variant.replace("-off", "-on")) as Variant;
+        const next = (
+          lightsOn
+            ? variant.replace("-on", "-off")
+            : variant.replace("-off", "-on")
+        ) as Variant;
         try {
           localStorage.setItem("avatarLights:v1", lightsOn ? "off" : "on");
         } catch {}
