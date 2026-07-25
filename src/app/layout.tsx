@@ -60,19 +60,6 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#ffffff" />
         <link rel="preconnect" href="https://unavatar.io" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="image"
-          href="/avatars/320/avatar-light-on.webp"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/avatars/320/avatar-dark-on.webp"
-          media="(prefers-color-scheme: dark)"
-          fetchPriority="high"
-        />
         <script
           type="speculationrules"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: prerender API

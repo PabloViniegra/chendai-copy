@@ -24,20 +24,24 @@ const variants: Record<Variant, { src: string; alt: string }> = {
   },
 };
 
+const DEFAULT_VARIANT: Variant = "light-on";
+
 export function AvatarToggle() {
-  const [lightsOn, setLightsOn] = useState(true);
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [variant, setVariant] = useState<Variant>(DEFAULT_VARIANT);
 
   useEffect(() => {
-    setMounted(true);
-    setIsDark(document.documentElement.classList.contains("dark"));
-    try {
-      setLightsOn(localStorage.getItem("avatarLights:v1") !== "off");
-    } catch {}
+    setVariant((current) => {
+      const isDark = document.documentElement.classList.contains("dark");
+      const lightsOn = localStorage.getItem("avatarLights:v1") !== "off";
+      return `${isDark ? "dark" : "light"}-${lightsOn ? "on" : "off"}` as Variant;
+    });
 
     const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains("dark"));
+      setVariant((current) => {
+        const lightsOn = !current.endsWith("-off");
+        const isDark = document.documentElement.classList.contains("dark");
+        return `${isDark ? "dark" : "light"}-${lightsOn ? "on" : "off"}` as Variant;
+      });
     });
     observer.observe(document.documentElement, {
       attributes: true,
@@ -46,25 +50,21 @@ export function AvatarToggle() {
     return () => observer.disconnect();
   }, []);
 
-  if (!mounted) {
-    return <div className="size-40 rounded-full border border-line" />;
-  }
-
-  const variant: Variant = `${isDark ? "dark" : "light"}-${lightsOn ? "on" : "off"}`;
   const { src, alt } = variants[variant];
+  const lightsOn = !variant.endsWith("-off");
 
   return (
     <button
       type="button"
-      onClick={() =>
-        setLightsOn((value) => {
-          const next = !value;
-          try {
-            localStorage.setItem("avatarLights:v1", next ? "on" : "off");
-          } catch {}
-          return next;
-        })
-      }
+      onClick={() => {
+        const next = (lightsOn
+          ? variant.replace("-on", "-off")
+          : variant.replace("-off", "-on")) as Variant;
+        try {
+          localStorage.setItem("avatarLights:v1", lightsOn ? "off" : "on");
+        } catch {}
+        setVariant(next);
+      }}
       aria-label={`Turn lights ${lightsOn ? "off" : "on"}`}
       aria-pressed={lightsOn}
       className="group relative inline-block rounded-full transition-transform hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -75,6 +75,8 @@ export function AvatarToggle() {
         width={320}
         height={320}
         sizes="160px"
+        preload
+        fetchPriority="high"
         className="size-40 rounded-full border border-line bg-accent-muted object-cover"
       />
     </button>
