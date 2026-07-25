@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   poweredByHeader: false,
   turbopack: { root: __dirname },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "unavatar.io",
+      },
+    ],
+  },
   async headers() {
     return [
       {
