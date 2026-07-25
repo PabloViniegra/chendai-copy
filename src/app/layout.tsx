@@ -42,6 +42,25 @@ export const metadata: Metadata = {
     template: "%s – Chánh Đại",
   },
   description: "Creating with code. Small details matter.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
+    apple: {
+      url: "/apple-touch-icon.png",
+      type: "image/png",
+      sizes: "180x180",
+    },
+  },
   openGraph: {
     title: "Chánh Đại – Design Engineer",
     description: "Creating with code. Small details matter.",
