@@ -24,12 +24,9 @@ export function LinedSection({
       <header className="screen-line-bottom px-4 pb-4 pt-5 sm:pt-6">
         <h2
           id={`${id}-heading`}
-          className="text-3xl font-medium tracking-tight text-balance"
+          className="[overflow-wrap:anywhere] text-3xl font-medium tracking-tight text-balance"
         >
-          <a
-            href={`#${id}`}
-            className="transition-colors hover:text-foreground/70"
-          >
+          <a href={`#${id}`} className="transition-colors hover:text-ink-muted">
             {title}
           </a>
         </h2>

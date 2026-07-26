@@ -16,7 +16,7 @@ export function SponsorsSection() {
         className="text-base font-medium tracking-tight"
       >
         <span>Backed by</span>{" "}
-        <span className="text-foreground/70">the community</span>
+        <span className="text-ink-muted">the community</span>
       </h2>
       <p className="mt-2 text-sm text-muted">
         Grateful to the sponsors who make this open-source work possible.
@@ -52,7 +52,7 @@ export function SponsorsSection() {
       <div className="mt-6 flex justify-center">
         <Link
           href="/sponsors"
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-ink-body transition-colors hover:bg-accent-muted/70 hover:text-foreground"
         >
           All sponsors
           <ArrowRightIcon className="size-3.5" />

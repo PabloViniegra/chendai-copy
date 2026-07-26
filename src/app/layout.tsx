@@ -5,6 +5,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteBottomNav } from "@/components/site-bottom-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { THEME_COLOR_LIGHT } from "@/lib/theme-colors";
 import "./globals.css";
 
 const commandPaletteLinks = [
@@ -89,7 +90,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content={THEME_COLOR_LIGHT} />
         <link
           rel="preconnect"
           href="https://unavatar.io"
@@ -103,7 +104,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <a
           href="#main-content"
-          className="sr-only fixed top-2 left-2 z-200 rounded-md bg-background px-4 py-2 font-medium text-foreground shadow-lg focus:not-sr-only"
+          className="sr-only fixed top-2 left-2 z-skip-link rounded-md bg-background px-4 py-2 font-medium text-foreground shadow-lg focus:not-sr-only"
         >
           Skip to main content
         </a>

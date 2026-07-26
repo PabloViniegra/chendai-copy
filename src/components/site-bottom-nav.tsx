@@ -13,11 +13,11 @@ const navItems = [
 
 export function SiteBottomNav() {
   return (
-    <div className="fixed bottom-[calc(0.5rem+env(safe-area-inset-bottom))] left-1/2 z-50 flex -translate-x-1/2 items-center rounded-xl border border-line bg-background px-2 py-1 shadow-md sm:hidden">
+    <div className="fixed bottom-[calc(0.5rem+env(safe-area-inset-bottom))] left-1/2 z-sticky flex -translate-x-1/2 items-center rounded-xl border border-line bg-background px-2 py-1 shadow-md sm:hidden">
       <button
         type="button"
         onClick={openCommandPalette}
-        className="flex h-8 min-w-20 items-center justify-center gap-2 rounded-md px-3 text-xs text-foreground/80"
+        className="flex h-8 min-w-20 items-center justify-center gap-2 rounded-md px-3 text-xs text-ink-muted active:translate-y-px"
         aria-label="Menu — open command palette"
         aria-haspopup="dialog"
         aria-controls="command-palette"

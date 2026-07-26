@@ -12,7 +12,7 @@ export function HelloSection() {
         Hello
       </h2>
 
-      <div className="mt-6 space-y-5 text-[15px] leading-7 text-foreground/85">
+      <div className="mt-6 max-w-[65ch] space-y-5 text-sm leading-7 text-ink-body">
         <p>
           I&rsquo;m{" "}
           <strong className="font-medium text-foreground">Chánh Đại</strong>{" "}
@@ -33,7 +33,7 @@ export function HelloSection() {
           >
             chanhdai.com
           </a>{" "}
-          (2k stars),{" "}
+          (2.1k stars),{" "}
           <a
             href="https://react-wheel-picker.chanhdai.com/"
             target="_blank"

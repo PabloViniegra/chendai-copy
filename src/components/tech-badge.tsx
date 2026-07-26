@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 type TechBadgeVariant = "filled" | "outline";
 
 const variantClass: Record<TechBadgeVariant, string> = {
-  filled: "bg-accent-muted text-foreground/80",
+  filled: "bg-accent-muted text-ink-muted",
   outline: "text-muted",
 };
 

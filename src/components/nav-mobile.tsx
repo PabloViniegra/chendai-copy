@@ -54,7 +54,7 @@ export function NavMobile({ items }: NavMobileProps) {
         aria-controls="mobile-navigation"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="flex size-8 items-center justify-center rounded-md text-foreground/70 transition-colors hover:bg-accent-muted hover:text-foreground md:hidden"
+        className="flex size-8 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground md:hidden"
       >
         {open ? (
           <CloseIcon className="size-4" />
@@ -87,7 +87,7 @@ export function NavMobile({ items }: NavMobileProps) {
             type="button"
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="flex size-8 items-center justify-center rounded-md text-foreground/70 transition-colors hover:bg-accent-muted hover:text-foreground"
+            className="flex size-8 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground"
           >
             <CloseIcon className="size-4" />
           </button>
@@ -102,7 +102,7 @@ export function NavMobile({ items }: NavMobileProps) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-accent-muted hover:text-foreground"
+              className="rounded-md px-3 py-2 text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground"
             >
               {item.label}
             </Link>

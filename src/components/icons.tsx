@@ -10,6 +10,14 @@ export function XIcon(props: IconProps) {
   );
 }
 
+export function HeartIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12 21s-6.716-4.35-9.428-8.09C.354 9.67 1.03 5.5 4.5 4.02 7.11 2.9 9.5 4 12 6.5c2.5-2.5 4.89-3.6 7.5-2.48 3.47 1.48 4.146 5.65 1.928 8.89C18.716 16.65 12 21 12 21z" />
+    </svg>
+  );
+}
+
 export function GitHubIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

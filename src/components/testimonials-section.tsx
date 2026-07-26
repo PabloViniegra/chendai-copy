@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
-import { ArrowRightIcon } from "./icons";
+import { ArrowRightIcon, XIcon } from "./icons";
 
 const FEATURED: Testimonial[] = [];
 const ROW_A: Testimonial[] = [];
@@ -21,7 +21,7 @@ for (let i = 0; i < TESTIMONIALS.length; i++) {
 function Card({ testimonial }: { testimonial: Testimonial }) {
   return (
     <article className="group/testimonial cv-card relative mx-0.5 flex w-xs shrink-0 flex-col gap-4 rounded-xl border border-line bg-background p-4 transition-colors hover:bg-accent-muted">
-      <blockquote className="font-serif text-base text-foreground/85">
+      <blockquote className="font-serif text-base text-ink-body">
         {testimonial.quote}
       </blockquote>
 
@@ -67,7 +67,7 @@ function Marquee({
   const animation =
     direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
   return (
-    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div className="group/marquee relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
       <div
         className={`flex w-max ${animation} group-hover/marquee:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused]`}
         style={paused ? { animationPlayState: "paused" } : undefined}
@@ -104,17 +104,17 @@ export function TestimonialsSection() {
             href="https://x.com/iamncdai"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="𝕏 (X/Twitter)"
+            aria-label="X (Twitter)"
             className="text-foreground underline underline-offset-4"
           >
-            𝕏
+            <XIcon className="inline size-3" />
           </a>
         </h2>
         <button
           type="button"
           aria-pressed={paused}
           onClick={() => setPaused((value) => !value)}
-          className="shrink-0 rounded-md border border-line px-2 py-1 font-mono text-xs text-muted transition-colors hover:text-foreground"
+          className="shrink-0 rounded-md border border-line px-2 py-1 font-mono text-xs text-muted transition-colors hover:text-foreground active:translate-y-px"
         >
           {paused ? "Play" : "Pause"}
         </button>

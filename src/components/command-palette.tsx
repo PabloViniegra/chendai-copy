@@ -289,7 +289,7 @@ export function CommandPalette({ links }: CommandPaletteProps) {
                 <p className="font-mono text-xs uppercase tracking-widest text-muted">
                   No results
                 </p>
-                <p className="mt-2 text-sm text-foreground/70">
+                <p className="mt-2 text-sm text-ink-muted">
                   Nothing matched{" "}
                   <span className="font-mono text-foreground">
                     &ldquo;{query}&rdquo;
@@ -332,7 +332,7 @@ export function CommandPalette({ links }: CommandPaletteProps) {
                               data-active={isActive || undefined}
                               onMouseEnter={() => setActiveIndex(flatIndex)}
                               onClick={() => runAction(item)}
-                              className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left text-sm text-foreground/85 transition-colors hover:bg-accent-muted hover:text-foreground data-[active]:bg-accent-muted data-[active]:text-foreground"
+                              className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left text-sm text-ink-body transition-colors hover:bg-accent-muted hover:text-foreground data-[active]:bg-accent-muted data-[active]:text-foreground"
                             >
                               <HighlightedLabel
                                 label={item.label}

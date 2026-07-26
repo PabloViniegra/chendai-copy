@@ -13,7 +13,7 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2">
+    <header className="sticky top-0 z-sticky max-w-screen overflow-x-clip bg-background px-2">
       <div className="screen-line-top screen-line-bottom mx-auto flex h-header items-center gap-2 border-r border-line pr-2 sm:gap-4 md:max-w-3xl">
         <Link href="/" aria-label="Home" className="flex shrink-0">
           <ChanhDaiMark className="h-8 w-16" />
@@ -29,7 +29,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-foreground/70 transition-colors hover:text-foreground"
+              className="text-ink-muted transition-colors hover:text-foreground"
             >
               {item.label}
             </Link>
@@ -45,7 +45,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="2.1k GitHub stars"
-            className="hidden h-8 items-center gap-1.5 rounded-md px-2 text-xs text-foreground/70 transition-colors hover:bg-accent-muted hover:text-foreground sm:inline-flex"
+            className="hidden h-8 items-center gap-1.5 rounded-md px-2 text-xs text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground sm:inline-flex"
           >
             <GitHubIcon className="size-4" />
             <span className="font-mono">2.1k</span>

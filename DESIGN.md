@@ -91,6 +91,10 @@ Shapes follow a dichotomy of geometric precision. Outer containers and section s
 ## Accessibility
 The site maintains high contrast ratios between text and background in both light and dark modes. Focus states are clearly defined with `ring-offset-2` and `ring-1` for keyboard navigability. Semantic HTML is used throughout, including `aria-labelledby` for lists and `aria-hidden` for decorative icons. Image assets include descriptive alt text (e.g., "Avatar with lights on in dark mode"). Target sizes for badges and links are optimized for touch and pointer accuracy. The typography uses rem units to respect user font size preferences.
 
+## Exports
+- **CSS custom properties**: [`tokens.css`](./tokens.css) at project root — `:root` (light) and `.dark` overrides, mirrors `src/app/globals.css`. Regenerate by hand if the source changes.
+- **Tailwind v4**: consumed via `@theme inline` in `src/app/globals.css`, which maps every token above to a `--color-*` / `--z-index-*` Tailwind namespace (e.g. `--ink-body` → `text-ink-body`).
+
 ## Assets
 - **Image**: [White Heart Emoji](https://abs-0.twimg.com/emoji/v2/svg/1f90d.svg) — preload link
 - **Icon**: [Apple Touch Icon](https://assets.chanhdai.com/images/apple-touch-icon.png) — device icon

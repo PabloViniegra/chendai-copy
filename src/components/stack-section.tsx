@@ -15,7 +15,7 @@ export function StackSection() {
             />
             <p className="font-mono text-xs">
               <span className="text-muted">{category.index}</span>
-              <span className="text-foreground/90">{category.title}</span>
+              <span className="text-ink-body">{category.title}</span>
             </p>
           </div>
           <ul className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 lg:grid-cols-4">
@@ -25,7 +25,7 @@ export function StackSection() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block min-w-0 text-[15px] text-foreground/85 underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                  className="block min-w-0 text-[15px] text-ink-body underline-offset-4 transition-colors hover:text-foreground hover:underline"
                 >
                   {item.name}
                 </a>

@@ -23,7 +23,7 @@ export default function TestimonialsPage() {
             key={`${testimonial.url}-${index}`}
             className="flex min-h-48 flex-col justify-between rounded-xl border border-line p-4 transition-colors hover:bg-accent-muted"
           >
-            <blockquote className="font-serif text-base text-foreground/85">
+            <blockquote className="font-serif text-base text-ink-body">
               “{testimonial.quote}”
             </blockquote>
             <footer className="mt-6 flex items-center gap-3">

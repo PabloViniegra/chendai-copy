@@ -11,7 +11,7 @@ function MetaRow({
   return (
     <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-sm">
       <dt className="font-mono text-xs text-muted">{label}</dt>
-      <dd className="text-foreground/85">{children}</dd>
+      <dd className="text-ink-body">{children}</dd>
     </div>
   );
 }

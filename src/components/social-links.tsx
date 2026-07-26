@@ -50,7 +50,7 @@ export function SocialLinks() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="inline-flex size-9 items-center justify-center rounded-md border border-line text-foreground/70 transition-colors hover:bg-accent-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="inline-flex size-9 items-center justify-center rounded-md border border-line text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <Icon className="size-4" />
           </a>

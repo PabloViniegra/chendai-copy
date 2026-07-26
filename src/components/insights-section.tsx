@@ -115,7 +115,7 @@ export function InsightsSection() {
           aria-label={`Traffic from ${data.startDate} to ${data.endDate}: ${data.summary.total_sessions.toLocaleString()} sessions and ${data.summary.unique_visitors.toLocaleString()} unique visitors`}
         >
           <title>Traffic over time: sessions and unique visitors</title>
-          <g className="text-foreground/20">
+          <g className="text-ink-faint">
             {[0.25, 0.5, 0.75].map((ratio) => (
               <line
                 key={ratio}

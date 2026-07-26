@@ -57,7 +57,7 @@ export function ContributionsGraph() {
         >
           GitHub Contributions
         </h2>
-        <p className="font-mono text-xs text-foreground/70">
+        <p className="font-mono text-xs text-ink-muted">
           <span className="tabular-nums">{total.toLocaleString("en-US")}</span>{" "}
           contributions in the past year
         </p>

@@ -1,4 +1,4 @@
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
+import { GitHubIcon, HeartIcon, LinkedInIcon, XIcon } from "@/components/icons";
 
 const SOURCE_CODE_URL = "https://github.com/ncdai/chanhdai.com";
 const LICENSE_URL = "https://github.com/ncdai/chanhdai.com/blob/main/LICENSE";
@@ -126,7 +126,7 @@ export function SiteFooter() {
               rel="noopener noreferrer"
               aria-label="Sponsor"
             >
-              <span className="font-mono text-xs">♥</span>
+              <HeartIcon className="size-4" />
             </a>
             <span aria-hidden className="h-4 w-px bg-line" />
             <a
@@ -144,7 +144,7 @@ export function SiteFooter() {
         <div className="screen-line-bottom relative overflow-hidden py-5 after:z-1 after:bg-foreground/15">
           <div
             aria-hidden="true"
-            className="text-center font-mono text-[clamp(2.5rem,13vw,7rem)] font-bold leading-none tracking-[0.24em] text-foreground/70 transition-colors duration-300 hover:text-foreground"
+            className="[overflow-wrap:anywhere] text-center font-mono text-[clamp(2.5rem,13vw,7rem)] font-bold leading-none tracking-[0.24em] text-ink-muted transition-colors duration-300 hover:text-foreground"
           >
             CHANHDAI
           </div>

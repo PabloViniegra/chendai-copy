@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from "@/lib/theme-colors";
 import { MoonIcon, SunIcon } from "./icons";
 
 type Theme = "light" | "dark";
@@ -23,7 +24,10 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", next === "dark" ? "#09090b" : "#ffffff");
+      ?.setAttribute(
+        "content",
+        next === "dark" ? THEME_COLOR_DARK : THEME_COLOR_LIGHT,
+      );
     try {
       localStorage.setItem("theme:v1", next);
     } catch {}
@@ -34,7 +38,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      className="inline-flex size-8 items-center justify-center rounded-md text-foreground/70 transition-colors hover:bg-accent-muted hover:text-foreground"
+      className="inline-flex size-8 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-accent-muted hover:text-foreground active:translate-y-px"
     >
       {mounted ? (
         theme === "dark" ? (

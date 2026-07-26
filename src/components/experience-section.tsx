@@ -12,7 +12,7 @@ function MetaRow({
   return (
     <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-sm">
       <dt className="font-mono text-xs text-muted">{label}</dt>
-      <dd className="text-foreground/85">{children}</dd>
+      <dd className="text-ink-body">{children}</dd>
     </div>
   );
 }
@@ -70,7 +70,7 @@ export function ExperienceSection() {
                 </dl>
 
                 {role.bullets && role.bullets.length > 0 && (
-                  <ul className="list-disc space-y-1 pl-5 text-[15px] leading-6 text-foreground/85 marker:text-muted">
+                  <ul className="list-disc space-y-1 pl-5 text-[15px] leading-6 text-ink-body marker:text-muted">
                     {role.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}

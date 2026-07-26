@@ -75,7 +75,7 @@ export function BlogSection() {
       <div className="mt-4 flex justify-center">
         <Link
           href="/blog"
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-foreground/85 transition-colors hover:bg-accent-muted/70 hover:text-foreground"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-line bg-accent-muted px-3 text-sm font-medium text-ink-body transition-colors hover:bg-accent-muted/70 hover:text-foreground"
         >
           All posts
           <ArrowRightIcon className="size-3.5" />
