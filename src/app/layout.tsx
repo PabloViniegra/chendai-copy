@@ -5,7 +5,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteBottomNav } from "@/components/site-bottom-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { THEME_COLOR_LIGHT } from "@/lib/theme-colors";
+import { THEME_COLOR_DARK, THEME_COLOR_LIGHT } from "@/lib/theme-colors";
 import "./globals.css";
 
 const commandPaletteLinks = [
@@ -35,6 +35,21 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 const themeScript = `(function(){try{var t=localStorage.getItem('theme:v1')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.dataset.theme=t;document.documentElement.dataset.avatarLights=localStorage.getItem('avatarLights:v1')||'on';}catch(e){}})();`;
+
+const speculationRules = JSON.stringify({
+  prerender: [
+    {
+      where: {
+        and: [
+          { href_matches: "/*" },
+          { not: { href_matches: "/sponsors" } },
+          { not: { href_matches: "/testimonials" } },
+        ],
+      },
+      eagerness: "moderate",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chanhdai.com"),
@@ -91,6 +106,11 @@ export default function RootLayout({
     >
       <head>
         <meta name="theme-color" content={THEME_COLOR_LIGHT} />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content={THEME_COLOR_DARK}
+        />
         <link
           rel="preconnect"
           href="https://unavatar.io"
@@ -99,6 +119,11 @@ export default function RootLayout({
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: no-FOUC theme bootstrap
           dangerouslySetInnerHTML={{ __html: themeScript }}
+        />
+        <script
+          type="speculationrules"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Speculation Rules are declarative JSON, not executed JS
+          dangerouslySetInnerHTML={{ __html: speculationRules }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">

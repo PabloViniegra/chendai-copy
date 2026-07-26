@@ -13,16 +13,19 @@ export function GlowCardGrid({ children }: GlowCardGridProps) {
   useEffect(() => {
     const grid = ref.current;
     if (!grid) return;
+    const cards = Array.from(
+      grid.querySelectorAll<HTMLElement>("[data-glow-card]"),
+    );
+    if (cards.length === 0) return;
 
     const handlePointerMove = (event: PointerEvent) => {
-      const cards = grid.querySelectorAll<HTMLElement>("[data-glow-card]");
-      cards.forEach((card) => {
+      for (const card of cards) {
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         card.style.setProperty("--glow-x", `${x}px`);
         card.style.setProperty("--glow-y", `${y}px`);
-      });
+      }
     };
 
     grid.addEventListener("pointermove", handlePointerMove);
