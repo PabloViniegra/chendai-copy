@@ -23,17 +23,21 @@ export default function SponsorsPage() {
             href={sponsor.url}
             target="_blank"
             rel="noopener sponsored"
-            className="flex min-h-24 items-center justify-center rounded-md border border-line p-4 transition-colors hover:bg-accent-muted"
+            aria-label={sponsor.name}
+            className="flex min-h-24 min-w-0 items-center justify-center rounded-md border border-line p-4 transition-colors hover:bg-accent-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            <sponsor.logo aria-hidden className="h-8 w-auto max-w-[180px]" />
-            <span className="sr-only">{sponsor.name}</span>
+            <sponsor.logo
+              aria-hidden
+              className="h-12 w-auto max-w-[200px] min-w-0"
+            />
           </a>
         ))}
         <a
           href="https://github.com/sponsors/ncdai"
           target="_blank"
           rel="noopener sponsored"
-          className="flex min-h-24 items-center justify-center rounded-md border border-line p-4 font-mono text-sm text-muted transition-colors hover:bg-accent-muted hover:text-foreground"
+          aria-label="Sponsor my work"
+          className="flex min-h-24 items-center justify-center rounded-md border border-line p-4 font-mono text-sm text-muted transition-colors hover:bg-accent-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           + Sponsor my work
         </a>

@@ -26,20 +26,16 @@ export function SponsorsSection() {
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {sponsors.map((sponsor) => (
             <li key={sponsor.url}>
-              <SponsorTile
-                href={sponsor.url}
-                name={sponsor.name}
-                aria-label={`${sponsor.name} logo`}
-              >
+              <SponsorTile href={sponsor.url} aria-label={sponsor.name}>
                 <sponsor.logo
                   aria-hidden
-                  className="h-8 w-auto max-w-[180px]"
+                  className="h-12 w-auto max-w-[200px] min-w-0"
                 />
               </SponsorTile>
             </li>
           ))}
           <li>
-            <SponsorTile href={SPONSORSHIP_URL} name="Sponsor my work">
+            <SponsorTile href={SPONSORSHIP_URL} aria-label="Sponsor my work">
               <PlusIcon className="size-6 text-muted" aria-hidden />
               <span className="font-mono text-xs text-muted">
                 Sponsor my work
@@ -64,12 +60,10 @@ export function SponsorsSection() {
 
 function SponsorTile({
   href,
-  name,
   children,
   ...props
 }: {
   href: string;
-  name: string;
   children: React.ReactNode;
 } & React.AriaAttributes) {
   return (
@@ -77,11 +71,10 @@ function SponsorTile({
       href={href}
       target="_blank"
       rel="noopener sponsored"
-      className="flex min-h-[90px] items-center justify-center gap-3 rounded-md border border-line p-4 transition-colors hover:bg-accent-muted"
+      className="flex min-h-24 min-w-0 items-center justify-center gap-3 rounded-md border border-line p-4 transition-colors hover:bg-accent-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       {...props}
     >
       {children}
-      <span className="sr-only">{name}</span>
     </a>
   );
 }
